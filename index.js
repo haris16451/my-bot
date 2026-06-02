@@ -5,15 +5,16 @@ const vec3 = require("vec3");
 
 // Plugins load karna
 const { pathfinder, Movements, goals } = require("mineflayer-pathfinder");
-const collectBlock = require("mineflayer-collectblock");
+const collectBlock = require("mineflayer-collectblock").plugin;
 const pvp = require("mineflayer-pvp").plugin;
 
 const botArgs = {
   host: "myworld222.aternos.me",
   port: 14406,
-  username: "haris bot",
-  version: "1.19.4",
+  username: "harisbot",
   auth: "offline",
+  checkTimeoutInterval: 60000,
+  keepAlive: true,
 };
 
 // 🏠 APNE GHAR KE COORDINATES YAHAN LIKHEIN
@@ -313,8 +314,16 @@ function initBot() {
     }
   });
 
+  bot.on("kicked", (reason) => {
+    console.log(`[Bot] Kicked! Reason: ${reason}`);
+  });
+
+  bot.on("error", (err) => {
+    console.log(`[Bot] Error: ${err.message}`);
+  });
+
   bot.on("end", (reason) => {
-    console.log(`[Bot] Disconnected. 10s mein reconnecting...`);
+    console.log(`[Bot] Disconnected. Reason: ${reason || "unknown"}. 10s mein reconnecting...`);
     setTimeout(initBot, 10000);
   });
 }
@@ -324,6 +333,6 @@ initBot();
 app.get("/", (req, res) => {
   res.send(`<h1>Ultra Smart Bot is Running!</h1>`);
 });
-app.listen(3000, () => {
-  console.log("Dashboard Online");
+app.listen(5000, "0.0.0.0", () => {
+  console.log("Dashboard Online at port 5000");
 });
