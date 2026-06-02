@@ -5,7 +5,7 @@ const vec3 = require("vec3");
 
 // Plugins load karna
 const { pathfinder, Movements, goals } = require("mineflayer-pathfinder");
-const collectBlock = require("mineflayer-collectblock").plugin;
+const collectBlock = require("mineflayer-collectblock");
 const pvp = require("mineflayer-pvp").plugin;
 
 const botArgs = {
