@@ -1,3 +1,4 @@
+require('dotenv').config();
 // ╔═══════════════════════════════════════════════════════════════════╗
 // ║          ADVANCED AI COMPANION BOT — MODULAR ARCHITECTURE         ║
 // ║     Groq AI + Pathfinder + Armor Manager + Anti-AFK + Stable      ║
@@ -18,6 +19,8 @@
 // ─────────────────────────────────────────────────────
 
 "use strict";
+require('dotenv').config();
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 //  [1] IMPORTS
@@ -60,7 +63,7 @@ const CONFIG = {
 
   // ── Groq AI ──
   groq: {
-    apiKey: "gsk_APNI_GROQ_API_KEY_YAHAN_DAALO",  // ← console.groq.com/keys
+    apiKey: "  process.env.GROQ_API_KEY;" // ← console.groq.com/keys
     model : "llama3-8b-8192",
     url   : "https://api.groq.com/openai/v1/chat/completions",
   },
